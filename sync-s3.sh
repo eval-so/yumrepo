@@ -2,8 +2,8 @@
 for f in f18
 do
   pushd $f/rpms
-    createrepo .
     rpm --addsign *.rpm
+    createrepo .
   popd
   s3cmd sync $f s3://yum.eval.so
 done
