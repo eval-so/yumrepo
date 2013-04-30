@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 for f in f18
 do
-  pushd $f
+  pushd $f/rpms
     createrepo .
-    rpm --addsign rpms/*.rpm
+    rpm --addsign *.rpm
   popd
   s3cmd sync $f s3://yum.eval.so
 done
