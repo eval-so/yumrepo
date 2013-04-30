@@ -1,0 +1,6 @@
+[eval.so]
+name=Eval.so yum repostiory - $releasever
+baseurl=http://yum.eval.so/f$releasever/rpms/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-evalso
