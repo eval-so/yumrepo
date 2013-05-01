@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 for f in f18
 do
+  if [[ ! -d "$f" ]]
+  then
+    mkdir $f
+  fi
   pushd $f/rpms
     rpm --addsign *.rpm
     createrepo .

@@ -58,6 +58,10 @@ do
       exit 1
     fi
     rm -rf $tmpdir
+    if [[ ! -d "../../f$version" ]]
+    then
+      mkdir "../../f$version"
+    fi
     mv -v /var/lib/mock/fedora-$version-$arch/result/*.src.rpm ../../f$version/srpms
     mv -v /var/lib/mock/fedora-$version-$arch/result/*.rpm ../../f$version/srpms
   done
