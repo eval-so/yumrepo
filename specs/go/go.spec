@@ -5,7 +5,7 @@ Summary:       Compiler for the Go language from Google
 Group:         Development/Languages
 License:       BSD
 URL:           http://golang.org/
-Source0:       %{name}%{version}.src.tar.gz
+Source0:       https://go.googlecode.com/files/%{name}%{version}.src.tar.gz
 Patch0:        0001_funct_nelem_inplace.patch
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: ed
