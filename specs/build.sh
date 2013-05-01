@@ -7,23 +7,45 @@ then
   exit 1
 fi
 
-echo "Building: $(rpmspec -P *.spec -q  --queryformat='%{name}-%{version}\n')"
-echo "Type yes to continue."
-read confirm
-
-if [[ "$confirm" != "yes" ]]
+if [[ "$1" == "" ]]
 then
-  echo "Quitting."
-  exit 1
+  versions="18"
+else
+  versions="$1"
+fi
+
+if [[ "$2" == "" ]]
+then
+  archs="x86_64 i386"
+else
+  archs="$1"
+fi
+
+echo "Building: $(rpmspec -P *.spec -q  --queryformat='%{name}-%{version}\n')"
+echo "On Fedora versions: $versions"
+echo "And Architectures: $archs"
+echo
+
+if [[ $EVALSO_NOCONFIRM != 1 ]];
+then
+  echo "Type yes to continue."
+  echo -n "> "
+  read confirm
+
+  if [[ "$confirm" != "yes" ]]
+  then
+    echo "Quitting."
+    exit 1
+  fi
 fi
 
 echo "== Downloading sources =="
 spectool -g -A *.spec
 
 echo "== Running mock (this will take some time) =="
-for version in 18
+for version in $versions
 do
-  for arch in x86_64 i386
+  for arch in $archs
   do
     tmpdir=`mktemp -d`
     mock -r fedora-$version-$arch --buildsrpm --spec *.spec --sources .
@@ -47,10 +69,13 @@ do
   echo "Found file downloaded via http(s): $(basename $file)"
 done
 
-echo "Type yes to continue."
-read confirm
+if [[ $EVALSO_NOCONFIRM != 1 ]];
+then
+  echo "Type yes to continue."
+  read confirm
+fi
 
-if [[ "$confirm" == "yes" ]]
+if [[ $EVALSO_NOCONFIRM == 1 || "$confirm" == "yes" ]]
 then
   for file in `spectool *.spec | grep http | awk '{print $2}'`
   do

@@ -47,6 +47,24 @@ run `./remove-file.sh <valid NVR>` from the repo root.
 e.g. Run `./remove-file.sh evalso-release-1.0.0-2` after building/uploading
 `evalso-release-1.0.0-3`.
 
+### New Fedora releases and new Architectures
+
+When a new Fedora release comes out (or gets branched), you can start building
+packages for it right away. You need to add it to a few scripts, first,
+however.
+
+* Line 2 of `s3-sync.sh` (space separated list)
+* Line 12 of `specs/build.sh` (space separated list)
+
+For adding a new architecture:
+
+* Line 19 of `specs/build.sh` (space separated list)
+
+Lastly, you'll want to build everything for the new version.
+
+`cd` into the `specs/` directory, and run
+`./rebuild-everything <version number>`
+
 # License
 
 GPLv2 to remain compatible with Fedora repos unless otherise noted in
