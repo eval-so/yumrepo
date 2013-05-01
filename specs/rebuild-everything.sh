@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [[ "$1" == "" ]]
+then
+  echo "Specify a Fedora version to build for, and optionally an architecture."
+  exit 1
+fi
+
 echo "== WARNING WARNING WARNING WARNING WARGNING =="
 echo
 echo "You're about to rebuild everything in the eval.so repository."
