@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-for f in f18
+for f in f18 f19
 do
   if [[ ! -d "$f" ]]
   then

@@ -9,7 +9,7 @@ fi
 
 if [[ "$1" == "" ]]
 then
-  versions="18"
+  versions="18 19"
 else
   versions="$1"
 fi
@@ -60,10 +60,11 @@ do
     rm -rf $tmpdir
     if [[ ! -d "../../f$version" ]]
     then
-      mkdir "../../f$version"
+      mkdir -p "../../f$version/rpms"
+      mkdir -p "../../f$version/srpms"
     fi
-    mv -v /var/lib/mock/fedora-$version-$arch/result/*.src.rpm ../../f$version/srpms
-    mv -v /var/lib/mock/fedora-$version-$arch/result/*.rpm ../../f$version/srpms
+    mv -v /var/lib/mock/fedora-$version-$arch/result/*.src.rpm ../../f$version/srpms/
+    mv -v /var/lib/mock/fedora-$version-$arch/result/*.rpm ../../f$version/rpms/
   done
 done
 
