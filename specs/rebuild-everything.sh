@@ -33,4 +33,5 @@ for d in `find . -type d`
 do
   pushd $d
   ../build.sh "$1" "$2"
+  popd
 done
