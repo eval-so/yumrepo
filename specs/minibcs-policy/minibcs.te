@@ -1,0 +1,9 @@
+module urandom 1.0;
+
+require {
+	type sandbox_t;
+        class dir { getattr search open };
+        class lnk_file { getattr read };
+}
+
+files_search_home(sandbox_t);
