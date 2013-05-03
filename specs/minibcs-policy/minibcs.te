@@ -1,4 +1,4 @@
-module minibcs 1.0;
+module minibcs 1.1;
 
 require {
 	type sandbox_t;
