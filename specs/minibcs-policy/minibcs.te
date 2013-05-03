@@ -1,4 +1,4 @@
-module urandom 1.0;
+module minibcs 1.0;
 
 require {
 	type sandbox_t;
