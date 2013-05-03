@@ -67,5 +67,5 @@ Lastly, you'll want to build everything for the new version.
 
 # License
 
-GPLv2 to remain compatible with Fedora repos unless otherise noted in
+MITto remain compatible with Fedora spec files unless otherise noted in
 `specs/*/LICENSE`.
