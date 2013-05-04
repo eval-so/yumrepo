@@ -1,9 +1,22 @@
-module minibcs 1.1;
+module minibcs 1.2;
 
 require {
 	type sandbox_t;
-        class dir { getattr search open };
+	#type proc_t;
+	type urandom_device_t;
+	type tmpfs_t;
+	type random_device_t;
+        class dir { getattr read search open };
+	class chr_file open;
+	class file open;
         class lnk_file { getattr read };
 }
 
 files_search_home(sandbox_t);
+
+
+#allow sandbox_t proc_t:dir read;
+allow sandbox_t tmpfs_t:dir read;
+allow sandbox_t random_device_t:chr_file open;
+allow sandbox_t urandom_device_t:chr_file open;
+

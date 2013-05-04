@@ -2,7 +2,7 @@
 %global selinux_policyver %(%{__sed} -e 's,.*selinux-policy-\\([^/]*\\)/.*,\\1,' /usr/share/selinux/devel/policyhelp || echo 0.0.0)
 
 Name:           minibcs-policy
-Version:        1.1
+Version:        1.2
 Release:        1%{?dist}
 License:        MIT
 Summary:        Custom policy for Eval.so's compilation system
@@ -72,6 +72,9 @@ fi
 %{_datadir}/selinux/*/*.pp
 
 %changelog
+* Sat May 4 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.2-1
+- Grant sandbox_t permissions to random, urandom, and tmpfs.
+
 * Fri May 3 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.1-1
 - Make spec version match module version.
 
