@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Factor
+GenericName=The Factor programming language
+Comment=The environment in which Factor is programmed
+Exec=factor-vm
+Icon=factor
+Terminal=false
+Type=Application
+Categories=Development;
