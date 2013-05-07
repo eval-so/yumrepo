@@ -18,7 +18,7 @@ if [[ "$2" == "" ]]
 then
   archs="x86_64 i386"
 else
-  archs="$1"
+  archs="$2"
 fi
 
 echo "Building: $(rpmspec -P *.spec -q  --queryformat='%{name}-%{version}\n')"
