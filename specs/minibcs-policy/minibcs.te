@@ -1,13 +1,16 @@
-module minibcs 1.3;
+module minibcs 1.4;
 
 require {
   type sandbox_t;
   type urandom_device_t;
   type tmpfs_t;
   type random_device_t;
+  type passwd_file_t;
+  type sysfs_t;
+  type zero_device_t;
 
   class dir { getattr read search open };
-  class chr_file open;
+  class chr_file { open execute };
   class file open;
   class lnk_file { getattr read };
   class filesystem getattr;
@@ -20,3 +23,6 @@ kernel_read_system_state(sandbox_t);
 allow sandbox_t tmpfs_t:dir read;
 allow sandbox_t random_device_t:chr_file open;
 allow sandbox_t urandom_device_t:chr_file open;
+allow sandbox_t passwd_file_t:file open;
+allow sandbox_t sysfs_t:dir read;
+allow sandbox_t zero_device_t:chr_file execute;
