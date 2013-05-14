@@ -1,13 +1,11 @@
 Name:          go
-Version:       1.0.3
+Version:       1.1
 Release:       1%{?dist}
 Summary:       Compiler for the Go language from Google
 Group:         Development/Languages
 License:       BSD
 URL:           http://golang.org/
 Source0:       https://go.googlecode.com/files/%{name}%{version}.src.tar.gz
-Patch0:        0001_funct_nelem_inplace.patch
-BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: ed
 BuildRequires: mercurial
 BuildRequires: bison
@@ -29,7 +27,6 @@ Go is a systems programming language that aims to be both fast and convenient.
 
 %prep
 %setup -q -n go
-%patch0 -p1
 
 %build
 export GOSRC="$(pwd)"
@@ -45,8 +42,6 @@ cd src
 LC_ALL=C PATH="$PATH:$GOBIN" ./make.bash
 
 %install
-rm -rf %{buildroot}
-
 export GOROOT_FINAL=%{_libdir}/go
 export GOROOT="%{buildroot}%{_libdir}/go"
 export GOOS=linux
@@ -75,9 +70,6 @@ for tool in 6a 6c 6g 6l; do
 ln -sf %{_libdir}/go/pkg/tool/linux_%{GOARCH}/$tool %{buildroot}%{_bindir}/$tool
 done
 
-%clean
-rm -rf %{buildroot}
-
 %files
 %defattr(-,root,root,-)
 %{_libdir}/go
@@ -91,6 +83,10 @@ rm -rf %{buildroot}
 %{_bindir}/cgo
 
 %changelog
+* Tue May 14 2013 Ricky Elrod <ricky@elrod.me> - 1.1-1
+- Update to 1.1
+- Remove patch, it's upstream now.
+
 * Wed Oct 3 2012 Sam Kottler <sam@kottlerdevelopment.com> - 1.0.3
 - Updated to 1.0.3
 
