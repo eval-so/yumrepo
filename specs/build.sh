@@ -48,9 +48,9 @@ do
   for arch in $archs
   do
     tmpdir=`mktemp -d`
-    mock -r fedora-$version-$arch --buildsrpm --spec *.spec --sources .
+    mock --no-clean -r fedora-$version-$arch --buildsrpm --spec *.spec --sources .
     mv -v /var/lib/mock/fedora-$version-$arch/result/*.src.rpm $tmpdir
-    mock -r fedora-$version-$arch $tmpdir/*.src.rpm
+    mock --no-clean -r fedora-$version-$arch $tmpdir/*.src.rpm
     if [[ $? != 0 ]]
     then
       echo " *** BUILD FAILED *** "
@@ -64,6 +64,7 @@ do
       mkdir -p "../../f$version/srpms"
     fi
     mv -v /var/lib/mock/fedora-$version-$arch/result/*.src.rpm ../../f$version/srpms/
+    mock --no-clean -r fedora-$version-$arch --install /var/lib/mock/fedora-$version-$arch/result/*.rpm
     mv -v /var/lib/mock/fedora-$version-$arch/result/*.rpm ../../f$version/rpms/
   done
 done
