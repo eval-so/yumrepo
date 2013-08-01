@@ -10,14 +10,14 @@
 # Wiki page: https://github.com/mozilla/rust/wiki/Note-packaging
 #
 
-Name:           rust-head
+Name:           rust
 Version:        0.7
 Release:        1%{?dist}
 Summary:        The Rust Programming Language
 
 License:        ASL 2.0 or MIT
 URL:            http://www.rust-lang.org
-Source0:        https://github.com/mozilla/rust/archive/master.tar.gz
+Source0:        http://static.rust-lang.org/dist/%{name}-%{version}.tar.gz
 
 BuildRequires:  llvm-devel
 BuildRequires:  clang-devel
@@ -31,8 +31,6 @@ BuildRequires:  chrpath
 
 # LLVM features are only present in x86_64
 BuildArch:      x86_64
-
-Conflicts:      rust
 
 %filter_from_requires /x86_64-unknown-linux-gnu/d
 %filter_requires_in -P bin/(rust|cargo).*
