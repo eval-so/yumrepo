@@ -2,7 +2,7 @@
 %global selinux_policyver %(%{__sed} -e 's,.*selinux-policy-\\([^/]*\\)/.*,\\1,' /usr/share/selinux/devel/policyhelp || echo 0.0.0)
 
 Name:           minibcs-policy
-Version:        1.4
+Version:        1.5
 Release:        1%{?dist}
 License:        MIT
 Summary:        Custom policy for Eval.so's compilation system
@@ -72,6 +72,9 @@ fi
 %{_datadir}/selinux/*/*.pp
 
 %changelog
+* Thu Aug 1 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.5-1
+- Grant sandbox_t access to lib_t:file execmod
+
 * Tue May 7 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.4-1
 - Try again to grant sandbox_t access to proc.
 

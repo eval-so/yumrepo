@@ -1,7 +1,8 @@
-module minibcs 1.4;
+module minibcs 1.5;
 
 require {
   type sandbox_t;
+  type lib_t;
   type urandom_device_t;
   type tmpfs_t;
   type random_device_t;
@@ -14,6 +15,7 @@ require {
   class file open;
   class lnk_file { getattr read };
   class filesystem getattr;
+  class file execmod;
 }
 
 files_search_home(sandbox_t);
@@ -26,3 +28,5 @@ allow sandbox_t urandom_device_t:chr_file open;
 allow sandbox_t passwd_file_t:file open;
 allow sandbox_t sysfs_t:dir read;
 allow sandbox_t zero_device_t:chr_file execute;
+allow sandbox_t lib_t:file execmod;
+
