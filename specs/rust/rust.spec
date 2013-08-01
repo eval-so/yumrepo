@@ -30,7 +30,7 @@ BuildRequires:  curl
 BuildRequires:  chrpath
 
 # LLVM features are only present in x86_64
-BuildArch:      x86_64
+#BuildArch:      x86_64
 
 %filter_from_requires /x86_64-unknown-linux-gnu/d
 %filter_requires_in -P bin/(rust|cargo).*
