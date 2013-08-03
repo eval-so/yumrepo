@@ -1,4 +1,4 @@
-module minibcs 1.5;
+module minibcs 1.6;
 
 require {
   type sandbox_t;
@@ -27,6 +27,8 @@ allow sandbox_t random_device_t:chr_file open;
 allow sandbox_t urandom_device_t:chr_file open;
 allow sandbox_t passwd_file_t:file open;
 allow sandbox_t sysfs_t:dir read;
+allow sandbox_t sysfs_t:lnk_file getattr;
 allow sandbox_t zero_device_t:chr_file execute;
 allow sandbox_t lib_t:file execmod;
 
+#role system_r types sandbox_t;
