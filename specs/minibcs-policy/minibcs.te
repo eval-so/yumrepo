@@ -1,4 +1,4 @@
-module minibcs 1.6;
+module minibcs 1.7;
 
 require {
   type sandbox_t;
@@ -9,10 +9,11 @@ require {
   type passwd_file_t;
   type sysfs_t;
   type zero_device_t;
+  type rabbitmq_beam_exec_t;
 
   class dir { getattr read search open };
   class chr_file { open execute };
-  class file open;
+  class file { open execute };
   class lnk_file { getattr read };
   class filesystem getattr;
   class file execmod;
@@ -27,8 +28,6 @@ allow sandbox_t random_device_t:chr_file open;
 allow sandbox_t urandom_device_t:chr_file open;
 allow sandbox_t passwd_file_t:file open;
 allow sandbox_t sysfs_t:dir read;
-allow sandbox_t sysfs_t:lnk_file getattr;
 allow sandbox_t zero_device_t:chr_file execute;
 allow sandbox_t lib_t:file execmod;
-
-#role system_r types sandbox_t;
+allow sandbox_t rabbitmq_beam_exec_t:file execute;

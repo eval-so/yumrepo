@@ -2,7 +2,7 @@
 %global selinux_policyver %(%{__sed} -e 's,.*selinux-policy-\\([^/]*\\)/.*,\\1,' /usr/share/selinux/devel/policyhelp || echo 0.0.0)
 
 Name:           minibcs-policy
-Version:        1.6
+Version:        1.7
 Release:        1%{?dist}
 License:        MIT
 Summary:        Custom policy for Eval.so's compilation system
@@ -72,7 +72,10 @@ fi
 %{_datadir}/selinux/*/*.pp
 
 %changelog
-* Thu Aug 1 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.6-1
+* Thu Aug 2 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.7-1
+- Grant sandbox_t access to rabbitmq_beam_exec_t:file {execute} instead.
+
+* Thu Aug 2 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.6-1
 - Grant sandbox_t access to sysfs_t:lnk_file for erlang.
 
 * Thu Aug 1 2013 Ricky Elrod <codeblock@fedoraproject.org> - 1.5-1
