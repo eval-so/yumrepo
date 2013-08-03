@@ -15,7 +15,7 @@ Requires(post):   /usr/sbin/semodule, /sbin/restorecon
 Requires(postun): /usr/sbin/semodule, /sbin/restorecon
 
 Source0:        minibcs.te
-Source0:        minibcs.fc
+Source1:        minibcs.fc
 
 %description
 Custom SELinux policy for BCS.
